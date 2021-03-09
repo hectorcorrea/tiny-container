@@ -116,17 +116,11 @@ func runShell(root string, shell string) {
 	fmt.Printf("\troot.: %s\n", root)
 	fmt.Printf("\tshell: %s\n", shell)
 
-	cmd := exec.Command(shell)
-
-	cmd.Env = []string{"tiny_demo=something tiny"}
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
 	// Set the hostname
 	err := syscall.Sethostname([]byte("tinyhost"))
 	if err != nil {
 		fmt.Printf("Error setting hostname - %s\n", err)
+		os.Exit(1)
 	}
 
 	// Pivot to our new root folder
@@ -137,6 +131,11 @@ func runShell(root string, shell string) {
 	}
 
 	// Launch the new shell session
+	cmd := exec.Command(shell)
+	cmd.Env = []string{"tiny_demo=something tiny"}
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 	err = cmd.Run()
 	if err != nil {
 		fmt.Printf("Error running the shell %s - %s\n", shell, err)
