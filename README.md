@@ -1,6 +1,6 @@
 # Creating a container from scratch
 
-This repository contains the demo files for how to create a Linux container from scratch. For detailed information about the files in this repo and how to use them go to http://hectorcorrea.com/blog/tiny-container
+This repository contains the demo files for how to create a Linux container from scratch. For detailed information about the files in this repo and how to use them go to https://hectorcorrea.com/blog/tiny-container/83
 
 ## Quick rundown 
 
